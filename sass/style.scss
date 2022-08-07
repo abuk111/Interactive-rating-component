@@ -1,0 +1,228 @@
+@import './colors';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	@include center;
+	flex-direction: column;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	font-family: 'Overpass', sans-serif;
+	background-color: $veryDarkBlue;
+	color: $lightGrey;
+}
+
+.wrapper {
+	max-width: 330px;
+}
+
+.card {
+	display: flex;
+	padding: 1.67em 1.67em 2.33em;
+	background-color: $bgcBlue;
+	border-radius: 1rem;
+
+	//rating state
+	&__rating {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+
+		&-star {
+			@include center;
+			@include circle;
+		}
+
+		&-text {
+			padding: 1.33em 0 1.67em;
+
+			h2 {
+				margin-bottom: 0.67em;
+				color: $white;
+			}
+			p {
+				font-size: 1.4rem;
+				line-height: 1.5em;
+			}
+		}
+
+		&-rate {
+			width: 100%;
+			&-div {
+				@include center;
+				width: 100%;
+				margin-bottom: 1.67em;
+				justify-content: space-around;
+				&-number {
+					@include center;
+					@include circle;
+					color: $lightGrey;
+					border: transparent;
+					transition: color 0.3s, background-color 0.3s;
+					cursor: pointer;
+
+					&:hover {
+						color: $white;
+						background-color: $mediumGrey;
+					}
+				}
+			}
+
+			.submit-btn {
+				width: 100%;
+				height: 3.37em;
+				color: $white;
+				background-color: $orange;
+				border: transparent;
+				border-radius: 1.5em;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+				font-weight: bold;
+				transition: color 0.3s, background-color 0.3s;
+				cursor: pointer;
+
+				&:hover {
+					color: $orange;
+					background-color: $white;
+				}
+			}
+		}
+	}
+
+	//thank you state
+	&__thank {
+		@include center;
+		align-items: center;
+		flex-direction: column;
+		padding: 0.67em 0;
+		text-align: center;
+
+		img {
+			height: 93px;
+			margin-bottom: 1.67em;
+		}
+
+		&-rated {
+			margin-bottom: 1.67em;
+			padding: 0.5em 1em;
+			height: 2em;
+			background-color: $mediumBlue;
+			color: $orange;
+			border-radius: 1em;
+		}
+
+		&-text {
+			h2 {
+				margin-bottom: 1em;
+				color: $white;
+			}
+		}
+	}
+}
+
+//media
+
+@media (min-width: 768px) {
+	.wrapper {
+		max-width: 415px;
+	}
+
+	.card {
+		padding: 2.33em;
+
+		//rating state
+
+		&__rating {
+			&-star {
+				width: 50px;
+				height: 50px;
+			}
+			&-text {
+				padding: 2.12em 0;
+
+				h2 {
+					margin-bottom: 0.67em;
+					font-size: 2.5rem;
+				}
+				p {
+					font-size: 1.4rem;
+					line-height: 1.5em;
+				}
+			}
+			&-rate {
+				&-div {
+					&-number {
+						width: 50px;
+						height: 50px;
+					}
+				}
+			}
+		}
+
+		//thank you state
+		&__thank {
+			padding: 0.67em 0;
+
+			img {
+				height: 108px;
+				margin-bottom: 2.33em;
+			}
+
+			&-rated {
+				margin-bottom: 2.33em;
+				padding: 0.5em 1em;
+				height: 2em;
+				background-color: $mediumBlue;
+				color: $orange;
+				border-radius: 1em;
+			}
+
+			&-text {
+				h2 {
+					margin-bottom: 1.35em;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+.hide {
+	display: none;
+}
+
+.focus {
+	color: $white;
+	background-color: $orange;
+}
+
+.error {
+	margin-top: 1em;
+	color: $orange;
+	text-align: center;
+}
+// atribution
+h1 {
+	display: none;
+}
+
+.attribution {
+	margin-top: 5em;
+	margin-bottom: 0.5em;
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
